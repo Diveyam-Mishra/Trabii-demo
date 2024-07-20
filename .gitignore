@@ -1,0 +1,52 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment files
+.env
+
+# Virtual environment directories
+venv/
+env/
+*.egg-info/
+
+# Distribution / packaging
+build/
+dist/
+*.egg
+*.egg-info/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Coverage reports
+.coverage
+*.cover
+*.py,cover
+
+# Mypy
+.mypy_cache/
+
+# Pytest
+.cache/
+
+# Black formatter
+.black/
+
+# Docker files
+docker-compose.override.yml
+Dockerfile
+
+# Other files
+*.sqlite3
+*.db

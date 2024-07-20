@@ -1,0 +1,12 @@
+sqlalchemy
+pydantic
+fastapi
+azure-cosmos
+typing-extensions
+psycopg2
+motor
+bcrypt 
+pyjwt
+passlib[bcrypt]
+python-jose[cryptography]
+pydantic-settings
