@@ -10,7 +10,7 @@ from Models.user_models import User, UserBase, UserCreate, UserResponse, NoSQLUs
 from passlib.context import CryptContext
 import jwt
 
-from Controllers.Auth import (create_user, get_user, get_current_user, get_user_by_email, get_user_by_username, settings, get_db, engine)
+from Controllers.Auth import (create_user, get_user, get_current_user, get_user_by_email, get_user_by_username, settings, get_db, engine, JWT_SECRET)
 
 
 
