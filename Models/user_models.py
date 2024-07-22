@@ -2,7 +2,7 @@ from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, List
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, func
 from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 Base = declarative_base()
 
@@ -57,7 +57,7 @@ class UserLogin(BaseModel):
 
 class SuccessResponse(BaseModel):
     message: str
-    token: Optional[str]
+    token: Optional[str] =""
     success: bool
 
     class Config:
@@ -75,3 +75,19 @@ class NoSQLUser(BaseModel):
     range: Optional[str] = None
     friends: List[int] = []
 
+
+class OTP(Base):
+    __tablename__ = 'otps-try'
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, index=True)
+    otp_code = Column(String)
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
+
+def is_otp_expired(otp_entry):
+    if otp_entry.created_at.tzinfo is None:
+        otp_entry.created_at = otp_entry.created_at.replace(tzinfo=timezone.utc)
+    
+    expiry_time = otp_entry.created_at + timedelta(minutes=10)
+    current_time = datetime.now(timezone.utc)
+    
+    return current_time > expiry_time

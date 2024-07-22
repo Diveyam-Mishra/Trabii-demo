@@ -47,3 +47,4 @@ class EventSchema(BaseModel):
     location: Location
     popularity: int
     event_details: EventDetails
+

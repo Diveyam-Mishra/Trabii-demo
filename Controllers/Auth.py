@@ -7,19 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 from pydantic_settings import BaseSettings
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-
-class Settings(BaseSettings):
-    JWT_SECRET: str
-    ACCESS_TOKEN_EXPIRE_MINUTES: int
-    ALGORITHM: str
-    mongoURI: str
-    sqlURI: str
-
-    class Config:
-        env_file = ".env"
-
-settings = Settings()
-SQLALCHEMY_DATABASE_URL = settings.sqlURI  # Or your preferred database URL
+from config import *
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
