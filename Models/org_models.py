@@ -26,7 +26,7 @@ class Location(BaseModel):
 class Organization_details(BaseModel):
     org_name: str
     location:Location
-    contact_info: int
+    contact_info: str
     bio: Optional[str]=""
 
 

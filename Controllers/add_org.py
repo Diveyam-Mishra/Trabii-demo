@@ -7,7 +7,7 @@ from Models.org_models import Organization, Organization_details, Location, GeoT
 
 router = APIRouter()
 
-@router.post("api/organization/", response_model=SuccessResponse)
+@router.post("/api/organization/", response_model=SuccessResponse)
 def add_organization(org_details: Organization_details, db: Session = Depends(get_db)):
     org_entry = Organization(
         org_name=org_details.org_name,
@@ -22,7 +22,7 @@ def add_organization(org_details: Organization_details, db: Session = Depends(ge
     db.refresh(org_entry)
     return SuccessResponse(message="Organization Added Successfully", success=True)
 
-@router.get("api/organization/{org_id}", response_model=Organization_details)
+@router.get("/api/organization/{org_id}", response_model=Organization_details)
 def get_organization(org_id: int, db: Session = Depends(get_db)):
     org_entry = db.query(Organization).filter(Organization.id == org_id).first()
     if not org_entry:
