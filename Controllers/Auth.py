@@ -4,7 +4,6 @@ from jose import JWTError
 from fastapi import HTTPException, Depends
 import jwt
 from fastapi.security import OAuth2PasswordBearer
-from pydantic_settings import BaseSettings
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from config import *
