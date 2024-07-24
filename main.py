@@ -68,17 +68,6 @@ class OTP(Base):
     otp_code = Column(String)
     created_at = Column(DateTime, default=datetime.now(timezone.utc))
 
-class Organization(Base):
-    __tablename__ = 'organizations'
-    id = Column(Integer, primary_key=True, index=True)
-    org_name = Column(String, nullable=False)
-    venue = Column(String, nullable=False)
-    latitude = Column(Float, nullable=False)
-    longitude = Column(Float, nullable=False)
-    contact_info = Column(String, nullable=False)
-    bio = Column(String, nullable=True)
-
-
 # Initialize SQL database
 def init_db():
     Base.metadata.create_all(bind=engine)
